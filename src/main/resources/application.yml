@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: uber-commerce
+
+
+  ai:
+    openai:
+      api-key: ${SPRINGAI_OPENAI_KEY}
+
+
+
+
+
+
+logging:
+  level:
+    org.springframework.web: INFO
+    org.springframework.jdbc: INFO
+
