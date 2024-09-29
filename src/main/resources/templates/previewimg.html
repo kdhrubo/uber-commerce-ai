@@ -7,8 +7,11 @@
 <body>
 
     <div id="previewImg">
-        <h3>Preview</h3>
-        <div class="custom-div"  >
+        <div class="d-flex justify-content-between">
+            <h3>Preview</h3>
+            <a hx-get="/addtoorder" hx-target="#order" hx-swap="innerHTML" class="btn btn-success float-end" >Order Now</a>
+        </div>
+        <div class="custom-div "  >
 
             <img th:src="@{${imageUrl}}" alt="Image" class="img-fluid">
         </div>
