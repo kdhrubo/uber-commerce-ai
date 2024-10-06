@@ -4,9 +4,8 @@ spring:
 
 
   ai:
-    openai:
-      api-key: ${SPRINGAI_OPENAI_KEY}
-
+    stabilityai:
+      api-key: ${SPRINGAI_STABILITYAI_KEY}
 
 
 

@@ -5,7 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.image.ImageModel;
 import org.springframework.ai.image.ImagePrompt;
 import org.springframework.ai.image.ImageResponse;
-import org.springframework.ai.openai.OpenAiImageOptions;
+
+import org.springframework.ai.stabilityai.api.StabilityAiImageOptions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,20 +26,20 @@ public class TShirtGeneratorController {
         log.info("Generating image");
         ImageResponse response = imageModel.call(
                 new ImagePrompt(tShirtGenerationRequest.description(),
-                        OpenAiImageOptions.builder()
-                                .withQuality("hd")
-                                .withResponseFormat("url")
+                        StabilityAiImageOptions.builder()
+                                .withStylePreset("cinematic")
                                 .withN(1)
-                                .withHeight(1024)
-                                .withWidth(1024).build())
+                                .withHeight(512)
+                                .withWidth(512).build())
 
         );
 
-        String url = response.getResult().getOutput().getUrl();
+        // log.info("Response: {}", response.getResult());
 
-        log.info("url - {}", url);
+        log.info("Response: {}", response.getResult().getMetadata());
+        log.info("Image: {}", response.getResult().getOutput());
 
-        model.addAttribute("imageUrl", url);
+        model.addAttribute("image", response.getResult().getOutput().getB64Json());
 
         return "previewimg :: #previewImg";
     }

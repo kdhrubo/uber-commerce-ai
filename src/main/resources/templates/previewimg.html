@@ -12,8 +12,15 @@
             <a hx-get="/addtoorder" hx-target="#order" hx-swap="innerHTML" class="btn btn-success float-end" >Order Now</a>
         </div>
         <div class="custom-div "  >
-
+            <!--
             <img th:src="@{${imageUrl}}" alt="Image" class="img-fluid">
+            -->
+
+            <img th:src="@{'data:image/png;base64,'+${image}}" class="img-fluid"/>
+
+
+
+
         </div>
 
     </div>
